@@ -6,9 +6,9 @@ bus-tbox对外消息只有一种，即COMMAND，其中request里具体command和
 
 ```json
 {
-  "time": number,
+  "time": "number",
   "session": "string",
-  "seq": number,
+  "seq": "number",
   "request": {
     "flag": "COMMAND",
     "command": "string",
