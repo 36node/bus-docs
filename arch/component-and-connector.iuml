@@ -118,11 +118,10 @@ package "bus-chart" {
     buschart ...> busop
 }
 
-node "aoma-system" as aomasys
-extmq <.. aomasys
+node "external-systems" as extsys
+extmq <.. extsys
 
 node "boxie-system" as boxiesys
-extmq <.. boxiesys
 
 package "bus-boxie" {
     ["bus-boxie"] ...> boxiesys
