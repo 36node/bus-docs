@@ -1,6 +1,6 @@
 ## 模块与集成模式
 
-* 模块视图
+* 模块与集成模式视图
 
 ![image](./module-and-integration.svg)
 

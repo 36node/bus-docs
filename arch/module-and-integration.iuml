@@ -46,10 +46,8 @@ component "bus-chart" as buschart
 buschart <.. event
 event <.. mq
 
-interface "http" as http
-buschart <.. http
-http <.. buscore
-http <.. busop
+buschart <..buscore : http
+buschart <..busop : http
 
 component "bus-boxie" as busboxie
 busboxie --> extevent
