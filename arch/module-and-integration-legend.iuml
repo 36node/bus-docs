@@ -1,0 +1,29 @@
+@startuml
+
+left to right direction
+
+component C1 as c1
+component C2 as c2
+component C3 as c3
+component C4 as c4
+
+interface P1 as p1
+interface P2 as p2
+
+c1 --> p1
+p1 --> c2
+
+c3 <.. p2
+p2 <.. c2
+
+c4 --> c1 : http
+c4 <.. c3 : http
+
+legend bottom left
+    C1 writes information to C2, through protocol P1
+    C3 reads information from C2, through protocol P2
+    C4 writes information to C1, through protocol http
+    C4 reads information from C3, through protocol http
+endlegend
+
+@enduml

@@ -1,8 +1,14 @@
-## 组件和连接
+## 模块与集成模式
 
-![image](./component-and-connector-view.svg)
+* 模块视图
 
-### 组件
+![image](./module-and-integration.svg)
+
+* 图例
+
+![image](./module-and-integration-legend.svg)
+
+### 模块
 
 #### bus-tbox
 
@@ -48,7 +54,7 @@
 
 获取外部系统电池预警信息，产生EXTEVENT。
 
-### 连接
+### 集成模式
 
 #### TCP/IP
 

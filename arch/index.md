@@ -1,6 +1,6 @@
 ## 架构文档
 
-* [模块和依赖](./module-view.md)
-* [组件和连接](./component-and-connector-view.md)
+* [模块与集成模式](./module-and-integration.md)
+* [组件与连接件](./component-and-connector.md)
 * [系统领域事件](./interfaces/index.md)
 * [架构决策记录](./adr/)

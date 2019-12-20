@@ -67,7 +67,9 @@ boxiesys ..> busboxie
 
 component "bus-admin" as busadmin
 busadmin <.. buscore : http
+busadmin --> buscore : http
 busadmin <.. busop : http
+busadmin --> busop : http
 busadmin <.. buslog : http
 busadmin <.. buschart : http
 

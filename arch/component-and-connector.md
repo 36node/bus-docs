@@ -1,6 +1,12 @@
-## 模块和依赖
+## 组件与连接件
 
-![image](./module-view.svg)
+* 组件与连接件视图
+
+![image](./component-and-connector.svg)
+
+* 图例
+
+![image](./component-and-connector-legend.svg)
 
 ### bus-admin
 
