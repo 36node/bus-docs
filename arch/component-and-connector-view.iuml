@@ -1,0 +1,84 @@
+@startuml
+
+left to right direction
+
+component "message-queue" as mq
+
+component "bus-tbox" as bustbox
+
+interface "tcp-ip" as tcpip
+tcpip --> bustbox
+
+cloud {
+    ["bus-2nd-terminal"] --> tcpip
+    ["vehicles-producer-platforms"] --> tcpip
+    ["bus-terminal"] --> ["vehicles-producer-platforms"]
+}
+
+interface "tbox" as tbox
+
+bustbox --> tbox
+tbox --> mq
+
+component "bus-core" as buscore
+buscore <.. tbox
+tbox <.. mq
+
+interface "extevent" as extevent
+buscore <.. extevent
+extevent <.. mq
+
+interface "event" as event
+buscore --> event
+event --> mq
+
+component "bus-op" as busop
+busop <.. event
+event <.. mq
+busop --> event
+event --> mq
+
+component "bus-log" as buslog
+buslog <.. tbox
+tbox <.. mq
+
+component "bus-chart" as buschart
+buschart <.. event
+event <.. mq
+
+interface "http" as http
+buschart <.. http
+http <.. buscore
+http <.. busop
+
+component "bus-boxie" as busboxie
+busboxie --> extevent
+extevent --> mq
+
+component "bus-core(-catl)" as buscatl
+buscatl --> extevent
+extevent --> mq
+
+node "catl-system" as catlsys
+catlsys ..> buscatl
+
+node "boxie-system" as boxiesys
+boxiesys ..> busboxie
+
+component "bus-admin" as busadmin
+busadmin <.. buscore : http
+busadmin <.. busop : http
+busadmin <.. buslog : http
+busadmin <.. buschart : http
+
+component "bus-tbox-notifier" as bustboxnotifier
+
+component "message-queue-for-external" as extmq
+mq ..> bustboxnotifier
+extmq <-- bustboxnotifier
+catlsys <-- bustboxnotifier
+
+node "external-systems" as extsys
+extmq ..> extsys
+
+@enduml

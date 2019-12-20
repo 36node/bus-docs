@@ -1,0 +1,158 @@
+@startuml
+
+left to right direction
+
+interface "TCP/IP" as tcpip
+
+cloud {
+    tcpip <-- ["bus-2nd-terminal"]
+    tcpip <-- ["vehicles-producer-platforms"]
+    ["vehicles-producer-platforms"] <-- ["bus-terminal"]
+}
+
+
+interface "HTTP" as http
+cloud {
+    ["desktop"] ..> http
+    ["mobile-application"] ..> http
+    ["big-screen"] ..> http
+}
+
+database mongo {
+    folder "bus-core-db" {
+        ["bus-core-db"]
+    }
+    folder "bus-op-db" {
+        ["bus-op-db"]
+    }
+}
+
+database "large-mongo" {
+    folder "bus-log-db" {
+        ["bus-log-db"]
+    }
+}
+
+database elasticsearch {
+    folder "chart" {
+        ["chart-indexes"]
+    }
+    folder "events" {
+        ["tbox-indexes"]
+        ["event-indexes"]
+        ["extevent-indexes"]
+    }
+}
+
+database kafka {
+    folder [mq] {
+        ["tbox-topic"]
+        ["event-topic"]
+        ["extevent-topic"]
+    }
+}
+
+database "kafka-for-external-systems" {
+    folder [extmq] {
+        ["ext-topic"]
+    }
+}
+
+component "kafka-to-es-transporter" as transporter
+transporter ...> ["tbox-topic"]
+transporter ...> ["event-topic"]
+transporter ...> ["extevent-topic"]
+transporter ---> ["tbox-indexes"]
+transporter ---> ["event-indexes"]
+transporter ---> ["extevent-indexes"]
+
+node "catl-system" as catlsys
+
+package "bus-tbox" {
+    ["bus-tbox"] <-- tcpip
+    ["tbox-topic"] <-- ["bus-tbox"]
+}
+
+package "bus-core" {      
+    ["bus-core-consumer"] ...> ["tbox-topic"]
+    ["bus-core-consumer"] ...> ["extevent-topic"]
+    ["bus-core-consumer"] ...> ["bus-core-db"]
+    ["bus-core"] as buscore
+    buscore ...> ["bus-core-db"]
+    http -- buscore
+    ["bus-core-daemon"] ...> ["bus-core-db"]
+    ["bus-core-producer"] ...> ["bus-core-db"]
+    ["bus-core-producer"] ---> ["event-topic"]
+}
+
+package "bus-core(-catl)" {
+    ["bus-core-catl"] ..> catlsys
+    ["extevent-topic"] <-- ["bus-core-catl"]
+}
+
+package "bus-op" {
+    ["bus-op-consumer"] ...> ["event-topic"]
+    ["bus-op-consumer"] ...> ["bus-op-db"]
+    ["bus-op"] as busop
+    busop ...> ["bus-op-db"]
+    http -- busop
+    ["bus-op-producer"] ...> ["bus-op-db"]
+    ["bus-op-producer"] ---> ["event-topic"]
+}
+
+package "bus-log" {
+    ["bus-log-consumer"] ...> ["tbox-topic"]
+    ["bus-log-consumer"] ....> ["bus-log-db"]
+    ["bus-log"] as buslog
+    http -- buslog
+    buslog ...> ["bus-log-db"]
+}
+
+node "auth-service" as authservice
+
+package "bus-chart" {
+    ["bus-chart-consumer"] ....> ["event-topic"]
+    ["bus-chart-consumer"] .....> ["chart-indexes"]
+    ["bus-chart"] as buschart
+    http -- buschart
+    buschart .....> ["chart-indexes"]
+    buschart .....> ["tbox-indexes"]
+    buschart ....> authservice
+    buschart ...> buscore
+    buschart ...> busop
+}
+
+node "aoma-system" as aomasys
+extmq <.. aomasys
+
+node "boxie-system" as boxiesys
+extmq <.. boxiesys
+
+package "bus-boxie" {
+    ["bus-boxie"] ...> boxiesys
+    ["extevent-topic"] <-- ["bus-boxie"]
+}
+
+node "telaidian-system" as telaidiansys
+
+package "bus-telaidian" {
+    ["bus-telaidian"] ...> telaidiansys
+    ["extevent-topic"] <-- ["bus-telaidian"] 
+}
+
+package "bus-tbox-notifier" {
+    ["tbox-topic"] <.. ["bus-tbox-notifier"]
+    catlsys <--- ["bus-tbox-notifier"]
+    extmq <--- ["bus-tbox-notifier"]
+}
+
+package "bus-admin" {
+    ["bus-admin"] -- http
+    ["bus-admin"] ....> authservice
+    ["bus-admin"] ...> buscore
+    ["bus-admin"] ...> busop
+    ["bus-admin"] ...> buslog
+    ["bus-admin"] ...> buschart
+}
+
+@enduml
