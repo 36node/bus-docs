@@ -32,7 +32,7 @@ COMMAND用来触发其他系统的操作，EVENT用来广播自己系统的变�
     "vin": "TESTSHIFTRIGHT001",
     "ns": "/bus/test",
     "body": {
-        id: "5d5b9d147f2e6f159cd825ae",
+        "id": "5d5b9d147f2e6f159cd825ae",
     },
 }
 ```
@@ -41,22 +41,22 @@ COMMAND用来触发其他系统的操作，EVENT用来广播自己系统的变�
 
 ```json
 {
-    flag: "string",
-    event: "string",
-    vin: "string",
-    ns: "string",
-    body: {},
+    "flag": "string",
+    "event": "string",
+    "vin": "string",
+    "ns": "string",
+    "body": {},
 }
 ```
 
 例如
 ```json
 {
-    flag: "EVENT",
-    event: "ALERT_CREATED",
-    vin: "TESTSHIFTRIGHT001",
-    ns: "/bus/test",
-    body: {
+    "flag": "EVENT",
+    "event": "ALERT_CREATED",
+    "vin": "TESTSHIFTRIGHT001",
+    "ns": "/bus/test",
+    "body": {
         "id": "5d5b9d147f2e6f159cd825ae",
         "at": "2019-08-19T13:39:13.000Z",
         "code": 53510,
