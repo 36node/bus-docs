@@ -2,7 +2,7 @@
 
 ### 充电站信息
 
-```json
+```
 {
   flag: "TELAIDIAN_CHARGING_INFO", // 日志flag，表示这条日志是特来电充电信息
   type: "STATION_INFO", // 数据类型
@@ -73,7 +73,7 @@
 
 ### 订单信息
 
-```json
+```
 {
   type: "CHARGING_ORDER",
   flag: "TELAIDIAN_CHARGING_INFO",
