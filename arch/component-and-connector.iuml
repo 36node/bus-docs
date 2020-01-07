@@ -71,6 +71,7 @@ package "bus-tbox" {
 package "bus-core" {      
     ["bus-core-consumer"] ...> ["tbox-topic"]
     ["bus-core-consumer"] ...> ["extevent-topic"]
+    ["bus-core-consumer"] ---> ["event-topic"]
     ["bus-core-consumer"] ---> ["bus-core-db"]
     ["bus-core"] as buscore
     buscore ---> ["bus-core-db"]
@@ -86,7 +87,7 @@ package "bus-core(-catl)" {
 }
 
 package "bus-op" {
-    ["bus-op-consumer"] ...> ["event-topic"]
+    ["bus-op-consumer"] ---> ["event-topic"]
     ["bus-op-consumer"] ---> ["bus-op-db"]
     ["bus-op"] as busop
     busop ---> ["bus-op-db"]
