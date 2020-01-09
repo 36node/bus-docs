@@ -49,6 +49,12 @@ event <.. mq
 buschart <..buscore : http
 buschart <..busop : http
 
+component "bus-pile" as buspile
+buspile <.. event
+event <.. mq
+buspile --> extevent
+extevent --> mq
+
 component "bus-boxie" as busboxie
 busboxie --> extevent
 extevent --> mq
@@ -70,6 +76,7 @@ busadmin <.. busop : http
 busadmin --> busop : http
 busadmin <.. buslog : http
 busadmin <.. buschart : http
+busadmin <.. buspile : http
 
 component "bus-tbox-notifier" as bustboxnotifier
 
@@ -80,5 +87,9 @@ catlsys <-- bustboxnotifier
 
 node "external-systems" as extsys
 extmq ..> extsys
+
+node "telaidian-system" as telaidiansys
+
+buspile <--- telaidiansys
 
 @enduml

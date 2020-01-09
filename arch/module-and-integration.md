@@ -22,6 +22,12 @@
 
 产生VEHICLE_SNAPSHOT、VEHICLE_DELETED等领域事件。
 
+#### bus-pile
+
+消费充电订单相关事件。
+
+产生充电站状态变化相关事件。
+
 #### bus-op
 
 消费ALERT、EXCEPTION等领域事件。

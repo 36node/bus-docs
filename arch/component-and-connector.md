@@ -61,6 +61,16 @@
 
 部署时bus-chart-consumer多实例分区消费kafka数据。
 
+### bus-pile
+
+负责充电相关的信息。
+
+部署时bus-pile多实例负载均衡。
+
+部署时bus-pile-consumer多实例分区消费kafka数据。
+
+部署时bus-pile-producer为单实例。
+
 ### bus-boxie
 
 负责获取外部路单信息。

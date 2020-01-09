@@ -20,6 +20,9 @@ database mongo {
     folder "bus-op-db" {
         ["bus-op-db"]
     }
+    folder "bus-pile-db" {
+        ["bus-pile-db"]
+    }
 }
 
 database "large-mongo" {
@@ -134,6 +137,18 @@ node "telaidian-system" as telaidiansys
 package "bus-telaidian" {
     ["bus-telaidian"] ...> telaidiansys
     ["extevent-topic"] <-- ["bus-telaidian"] 
+}
+
+package "bus-pile" {
+    ["bus-pile-consumer"] ---> ["event-topic"]
+    ["bus-pile-consumer"] ---> ["bus-pile-db"]
+    ["bus-pile"] as buspile
+    buspile <--- telaidiansys
+    buspile ---> ["bus-pile-db"]
+    http --> buspile
+    buspile ---> ["extevent-topic"]
+    ["bus-pile-producer"] ---> ["bus-pile-db"]
+    ["bus-pile-producer"] ---> ["event-topic"]
 }
 
 package "bus-tbox-notifier" {
