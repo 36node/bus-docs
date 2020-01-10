@@ -45,8 +45,8 @@
 
 ### 充电桩信息格式
 
-```js
-const log = {
+```
+{
   level: 30,
   time: 1578647224628,
   pid: 5066,
@@ -82,7 +82,7 @@ const log = {
   flag: "TELAIDIAN_CHARGING_INFO",
   msg: "receive PILE_INFO data",
   v: 1,
-};
+}
 ```
 
 ### 订单信息
