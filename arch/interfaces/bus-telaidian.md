@@ -39,36 +39,50 @@
     payment: "线上", // 支付方式
     supportOrder: 0, // 是否支持预约 0:不支持， 1:支持
     remark: "", // 备注
-    equipmentInfos: [ // 充电设备信息 (充电桩)
-      ..., // 有很多
-      {
-        id: "3102300002324", // 充电设备id
-        equipmentName: "324号直流", // 充电设备名称
-        manufacturerId: "395815801", // 设备生产商编码
-        manufacturerName: "青岛特锐德电气股份有限公司", // 设备生产商名称
-        equipmentModel: "3907060140040053", // 设备型号
-        productionDate: "", // 生产日期
-        equipmentType: 1, // 设备类型 1:直流设备, 2:交流设备, 3:交直流一体设备, 4:无线设备, 5:其他
-        equipmentLng: 121.226528, // 设备经度 GCJ-02 坐标系
-        equipmentLat: 31.739049, // 设备维度 GCJ-02 坐标系
-        power: 150, // 充电设备总功率 kW
-        connectorInfos: [ // 充电设备接口信息
-          {
-            connectorId: "3102300002324", // 接口id
-            connectorName: "324号直流",  // 接口名称
-            connectorType: 4, // 接口类型 1:家用插座, 2:交流接口插座（模式3, 连接方式C）, 3:交流接口插头（带枪线，模式3, 连接方式C）, 4:直流接口长枪头（带枪线，模式4）, 5:无线充电座, 6:其他
-            voltageUpperLimits: 750, // 额定电压上限 V
-            voltageLowerLimits: 250, // 额定电压下限 V
-            current: 200, // 额定电流 A
-            power: 150, // 额定功率 kW
-            parkNo: "", // 车位号
-            nationalStandard: 2, //国家标准 1: 2011, 2:2015
-          },
-        ],
-      },
-    ],
   }
 }
+```
+
+### 充电桩信息格式
+
+```js
+const log = {
+  level: 30,
+  time: 1578647224628,
+  pid: 5066,
+  hostname: "38a87faf48b3",
+  session: "ZBGU_",
+  payload: {
+    id: "3102300002324", // 充电设备id
+    equipmentName: "324号直流", // 充电设备名称
+    manufacturerId: "395815801", // 设备生产商编码
+    manufacturerName: "青岛特锐德电气股份有限公司", // 设备生产商名称
+    equipmentModel: "3907060140040053", // 设备型号
+    productionDate: "", // 生产日期
+    equipmentType: 1, // 设备类型 1:直流设备, 2:交流设备, 3:交直流一体设备, 4:无线设备, 5:其他
+    equipmentLng: 121.226528, // 设备经度 GCJ-02 坐标系
+    equipmentLat: 31.739049, // 设备维度 GCJ-02 坐标系
+    power: 150, // 充电设备总功率 kW
+    connectorInfos: [
+      // 充电设备接口信息
+      {
+        connectorId: "3102300002324", // 接口id
+        connectorName: "324号直流", // 接口名称
+        connectorType: 4, // 接口类型 1:家用插座, 2:交流接口插座（模式3, 连接方式C）, 3:交流接口插头（带枪线，模式3, 连接方式C）, 4:直流接口长枪头（带枪线，模式4）, 5:无线充电座, 6:其他
+        voltageUpperLimits: 750, // 额定电压上限 V
+        voltageLowerLimits: 250, // 额定电压下限 V
+        current: 200, // 额定电流 A
+        power: 150, // 额定功率 kW
+        parkNo: "", // 车位号
+        nationalStandard: 2, //国家标准 1: 2011, 2:2015
+      },
+    ],
+  },
+  type: "PILE_INFO",
+  flag: "TELAIDIAN_CHARGING_INFO",
+  msg: "receive PILE_INFO data",
+  v: 1,
+};
 ```
 
 ### 订单信息
