@@ -47,11 +47,8 @@
 
 ```
 {
-  level: 30,
-  time: 1578647224628,
-  pid: 5066,
-  hostname: "38a87faf48b3",
-  session: "ZBGU_",
+  type: "PILE_INFO",
+  flag: "TELAIDIAN_CHARGING_INFO",
   payload: {
     id: "3102300002324", // 充电设备id
     equipmentName: "324号直流", // 充电设备名称
@@ -77,11 +74,7 @@
         nationalStandard: 2, //国家标准 1: 2011, 2:2015
       },
     ],
-  },
-  type: "PILE_INFO",
-  flag: "TELAIDIAN_CHARGING_INFO",
-  msg: "receive PILE_INFO data",
-  v: 1,
+  }
 }
 ```
 
