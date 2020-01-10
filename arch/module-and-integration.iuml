@@ -54,6 +54,8 @@ buspile <.. event
 event <.. mq
 buspile --> extevent
 extevent --> mq
+buspile <-- extevent
+extevent <-- mq
 
 component "bus-boxie" as busboxie
 busboxie --> extevent
