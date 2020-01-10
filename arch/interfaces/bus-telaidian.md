@@ -8,6 +8,7 @@
   type: "STATION_INFO", // 数据类型
   payload: {
     id: "3102300002", // 充电站id
+    station: "3102300002", // 充电站id
     operatorId: "395815801", // 运营商id
     equipmentOwnerId: "MA1G5G530", // 设备所属商id
     stationName: "上海崇明堡镇电厂公交充电站", // 充电站名称
