@@ -460,3 +460,58 @@ bus-core对外消息有以下几类
     }
 }
 ```
+
+### 充电订单事件
+
+```json
+{
+    "flag": "EVENT",
+    "event": "CHARGING_ORDER",
+    "vin": "LWXCD5E45GD600476",
+    "ns": "/bus/shanghai/chongming/c2",
+    "body": {
+        "id": "OCCRG202001125282431285",
+        "billCode": "202001110300169103",
+        "way": "车枪识别充",
+        "endReason": "平台终止",
+        "station": "3102300002",
+        "stationName": "上海崇明堡镇电厂公交充电站",
+        "pile": "3102300002305",
+        "pileName": "305号直流",
+        "startAt": "2020-01-11T22:00:48",
+        "endAt": "2020-01-12T00:23:47.983",
+        "power": 178.24,
+        "ecTaxInPrice": 0,
+        "scTaxInPrice": 0,
+        "orderAmount": 0,
+        "cardUser": "",
+        "ns": "/bus/shanghai/chongming/c2",
+        "vehiclePlate": "沪DQ1256",
+        "vehicleNo": "W1C-0411",
+        "vehicleLine": "5d8e0b7e7e9ba80013ed7696",
+        "vehicle": "LWXCD5E45GD600476",
+        "orderDetail": {
+            "valleyPower": 0,
+            "peakEc": 0,
+            "peakSc": 0,
+            "sharpTime": 0,
+            "flatTime": 143,
+            "sharpEc": 0,
+            "flatPower": 178.24,
+            "sharpPower": 0,
+            "flatTotalPrice": 0,
+            "valleyEc": 0,
+            "valleySc": 0,
+            "flatEc": 0,
+            "sharpSc": 0,
+            "valleyTotalPrice": 0,
+            "sharpTotalPrice": 0,
+            "flatSc": 0,
+            "valleyTime": 0,
+            "peakTime": 0,
+            "peakPower": 0,
+            "peakTotalPrice": 0
+        }
+    }
+}
+```
