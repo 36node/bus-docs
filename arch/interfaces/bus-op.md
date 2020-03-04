@@ -2,14 +2,14 @@
 
 消息会根据vin进行分区，保证同一vin下的消息在同一个分区，保证消费顺序。
 
-### 报警状态更新事件
+### 报警产生事件
 
-报警被创建或更新时，发出报警状态更新事件
+报警被创建时，发出报警状态更新事件
 
 ```json
 {
   "flag": "EVENT",
-  "event": "ALERT_UPDATED",
+  "event": "ALERT_CREATED",
   "vin": "LJM6GCDC9JAS02731",
   "ns": "/pudongbus/0rzjz8/yxd0yd",
   "body": {
@@ -33,6 +33,43 @@
     "vehicleModel": "SLK6101UBEVN1",
     "vehicleModelBrief": "L0E",
     "updatedAt": "2019-09-10T07:00:17.674Z",
+    "createdAt": "2019-09-10T07:00:17.674Z",
+    "id": "5d774a01bb2e3e0011804aed"
+  }
+}
+```
+
+### 报警状态更新事件
+
+报警更新时，发出报警状态更新事件
+
+```json
+{
+  "flag": "EVENT",
+  "event": "ALERT_UPDATED",
+  "vin": "LJM6GCDC9JAS02731",
+  "ns": "/pudongbus/0rzjz8/yxd0yd",
+  "body": {
+    "alert": "5d774a01bb2e3e0011804aed",
+    "type": "整车",
+    "lastAt": "2019-09-10T07:00:23.000Z",
+    "startedAt": "2019-09-10T07:00:13.000Z",
+    "window": "20190910",
+    "action": "NONE",
+    "code": "10100003",
+    "count": 2,
+    "level": 3,
+    "name": "整车控制器系统故障",
+    "state": "OPEN",
+    "vehicle": "LJM6GCDC9JAS02731",
+    "vehiclePlate": "沪A-05278D",
+    "vehicleNo": "L0E-017",
+    "ns": "/pudongbus/0rzjz8/yxd0yd",
+    "vehicleLine": "5d43a8ada2549f0013f5586e",
+    "vehicleProducer": "申龙",
+    "vehicleModel": "SLK6101UBEVN1",
+    "vehicleModelBrief": "L0E",
+    "updatedAt": "2019-09-10T07:00:27.674Z",
     "createdAt": "2019-09-10T07:00:17.674Z",
     "id": "5d774a01bb2e3e0011804aed"
   }
